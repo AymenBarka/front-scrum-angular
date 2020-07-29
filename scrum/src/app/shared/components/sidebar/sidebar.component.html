@@ -1,0 +1,27 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header">
+            <h2>{{users?.username}}</h2>
+            <h4>{{users?.email}}</h4>
+        </div>
+        <div  class="col-lg-12">
+                 </div>
+        <p><img [src]="img.src" alt="profile photo" class="img-circle"></p>
+        <p>
+            <button mat-raised-button color="accent"  (click)="editProfile()" class="btn btn-theme"><i class="fa fa-edit"></i>Edit
+              profile</button>
+              </p>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Pages</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/scrum/Dashboard">Dashboard</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/scrum/project">Project</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/articles">Articles</a>
+
+
+
+
+</mat-nav-list>

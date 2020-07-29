@@ -1,0 +1,97 @@
+<section id="container">
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Add new project</h3>
+        <!-- BASIC FORM VALIDATION -->
+        <div class="row mt">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <form [formGroup]="form">
+  
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Name" formControlName="name" required>
+                  <mat-error *ngIf="form.hasError('required', 'name')">
+                    Name of project is required *
+                  </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Desciption..." rows="2" cols="50" formControlName="description"
+                    required>
+                  <mat-error *ngIf="form.hasError('required', 'description')">
+                    Description of project is required *
+                  </mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Technologie..." rows="2" cols="50" formControlName="technologies"
+                      required>
+                    <mat-error *ngIf="form.hasError('required', 'technologies')">
+                      Technologie of project is required *
+                    </mat-error>
+                  </mat-form-field>
+    
+  
+                
+                  <p>UserStory
+                  <button class="btn-icon" (click)="addUserStory()" ><i  class="material-icons">
+                    add_circle </i></button>
+                  </p>
+                
+                <div formArrayName="user">
+                  <div class="container user-container" *ngFor="let user of form.get('user')['controls']; let i = index"
+                    formGroupName="{{i}}">
+                    <div class="row">
+                      <div class="col-8">
+                        <mat-form-field>
+                          <input formControlName="description" matInput placeholder="UserStory" required>
+  
+                        </mat-form-field>
+                      </div>
+                      <button class="btn-icon" (click)="deleteUserStory(i)" ><i  class="material-icons">
+                        remove_circle </i></button>
+                    </div>
+  
+  
+                    <div class="row mt-3">
+                      <div class="col-8">
+                      </div>
+                    </div>
+                    <div class="row" formArrayName="tasks">
+                      <div class="container">
+                      <p>
+                        Tasks:
+                          <button class="btn-icon" (click)="addTask(i)" ><i  class="material-icons">
+                              add_circle </i></button>
+                      </p>
+                      </div>
+                      <div class="col-6" *ngFor="let task of user.controls.tasks.controls; let j = index"
+                        formGroupName="{{j}}">
+                        <div class="container user-container">
+                          <div class="row">
+                            <div class="col-8">
+                              <mat-form-field>
+                                <input formControlName="task" matInput placeholder="Task" required>
+  
+                              </mat-form-field>
+                            </div>
+                            <button class="btn-icon" (click)="deleteTask(i,j)" ><i  class="material-icons">
+                                remove_circle </i></button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+  
+                  </div>
+  
+                </div>
+                <button class="btn btn-theme float-right" (click)="addProject()">Save</button>
+              </form>
+  
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </section>

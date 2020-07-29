@@ -1,0 +1,18 @@
+.content {
+    width: 40%;
+    margin: 80px auto;
+  }
+  
+  
+  .banner_btn {
+    left: 200px;
+    background: #8490ff ;
+    color: #fff; }
+    .banner_btn:hover {
+      background-position: right center;
+      color: rgb(83, 81, 81); }
+     
+   
+      .example-full-width{
+        width: 100%;
+      }

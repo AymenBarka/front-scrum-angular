@@ -1,0 +1,18 @@
+.banner_btn {
+    left: 350px;
+    background: #8490ff ;
+    color: #fff; }
+    .banner_btn:hover {
+      background-position: right center;
+      color: rgb(83, 81, 81); }
+
+
+.banner_btn_annuler {
+    color: black;
+    border-color: #8490ff;
+    border-radius: 5px;
+    font-size: 13px;
+    left:180px }
+        .banner_btn_annuler:hover {
+          background-position: right center;
+          color: rgb(83, 81, 81); }

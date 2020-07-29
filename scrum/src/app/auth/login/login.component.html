@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Login</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+    <form [formGroup]="loginForm">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                    <input type="text" matInput placeholder="Username" formControlName="username" required="required">
+                </mat-form-field>
+            </div>
+            <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                    <input type="password" matInput placeholder="Password" formControlName="password"
+                        [type]="hide ? 'password' : 'text'" required="required">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <button mat-raised-button type="submit" class="banner_btn" (click)="login()">Login</button>
+    <button mat-raised-button class="banner_btn_annuler" (click)="close()">Close</button>
+</mat-dialog-actions>

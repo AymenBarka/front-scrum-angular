@@ -1,0 +1,79 @@
+<section id="main-content">
+    <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Project : {{project?.name}}</h3>
+        <div class="row mt">
+            <div class="col-md-12">
+                <div class="content-panel">
+
+                    <h4><i class="fa fa-angle-right"></i> List of Sprints</h4>
+
+
+                    <table class="table table-striped table-advance table-hover">
+
+
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Tasks</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let sprint of listSprint; let i=index">
+                                <td>{{sprint.name}}</td>
+                                <td>{{sprint.description}}</td>
+                                <td>
+                                    <p *ngFor="let task of sprint.tasks">
+                                        {{task.title}}
+                                    
+                                        <span *ngIf="task.state=='todo'" class="badge bg-important">ToDo</span>
+                                        <span *ngIf="task.state=='doing'" class="badge bg-warning">Doing</span>
+                                        <span *ngIf="task.state=='done'" class="badge bg-success">Done</span>
+                                    </p>
+                                </td>
+
+                                <td class="td-actions text-right">
+                                    <!--<button mat-raised-button type="button" matTooltip="Edit sprint"
+                                                    [matTooltipPosition]="'above'"
+                                                    class="btn btn-danger btn-link btn-sm btn-just-icon"
+                                                    (click)="openDialog_edit(i,sprint.id)">
+                                                    <i class="material-icons">edit</i>
+                                                </button>-->
+                                    <button mat-raised-button type="button" matTooltip="Remove"
+                                        [matTooltipPosition]="'above'"
+                                        class="btn btn-theme btn-link btn-sm btn-just-icon"
+                                        (click)="removeSprint(i,sprint.id)">
+                                        <i class="material-icons">close</i>
+                                    </button>
+                                    <button mat-raised-button type="button" matTooltip="Start Sprint"
+                                        [matTooltipPosition]="'above'"
+                                        routerLink="/scrum/project/{{projectId}}/{{sprint.id}}/task-manager"
+                                        routerLinkActive="router-link-active"
+                                        class="btn btn-theme btn-link btn-sm btn-just-icon">
+                                        <i class="material-icons click-icon-play">play_arrow </i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan=4>
+                                    <button mat-raised-button class="material-icons float-right"
+                                        routerLink="/scrum/project/{{projectId}}/new-sprint"
+                                        routerLinkActive="active"><i class="material-icons"> add_circle</i>
+                                    </button>
+                                </td>
+
+
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+</section>
