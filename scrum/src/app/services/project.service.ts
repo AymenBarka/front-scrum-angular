@@ -14,10 +14,10 @@ const httpOptions = {
 export class ProjectService {
 
   constructor(private http:HttpClient,  private tokenStorage:TokenStorageService) { }
-  URL1 = 'http://localhost:8084/api/project/';
-  URL2 = 'http://localhost:8084/userStory/';
-  URL3 = 'http://localhost:8084/taches/';
-  URL4 = 'http://localhost:8084/sprints/';
+  URL1 = 'https://bescrum.herokuapp.com/api/project/';
+  URL2 = 'https://bescrum.herokuapp.com/userStory/';
+  URL3 = 'https://bescrum.herokuapp.com/taches/';
+  URL4 = 'https://bescrum.herokuapp.com/sprints/';
 
 
   userConnecter = this.tokenStorage.getUser();
@@ -46,7 +46,7 @@ export class ProjectService {
     return this.http.post(`${this.URL3}` + 'add' + '/' + id , task, httpOptions)
   }
   getNonTakenTasks(id) : Observable<any>{
-    return this.http.get(`${this.URL3}` + 'nonTakenTasks' + '/' + `${id}`, httpOptions )
+    return this.http.get(`${this.URL3}` + 'nonTakenTasks' + '/' + id , httpOptions )
   }
   // Sprint
   createSprint(form) : Observable<any>{
@@ -58,10 +58,10 @@ export class ProjectService {
     return this.http.post(`${this.URL4}`+ 'addSprint', sprint, httpOptions)
   }
   addTaskToSprint(id , idTask): Observable<any>{
-    return this.http.get(`${this.URL4}` + 'addTaskToSprint' + '/' + `${id}` + '/' + `${idTask}` , httpOptions )
+    return this.http.get(`${this.URL4}` + 'addTaskToSprint' + '/' + `${id}` + '/' +`${idTask}` , httpOptions )
   }
   getAllSprints(id): Observable<any>{
-    return this.http.get(`${this.URL4}` + 'getSprintsByProject' + '/' + `${id}` , httpOptions )
+    return this.http.get(`${this.URL4}` + 'getSprintsByProject' + '/' +`${id}` , httpOptions )
   }
   deleteSprint (id): Observable<any>{
     return this.http.get(`${this.URL4}` + 'deleteSprint' + '/' + `${id}` , httpOptions)

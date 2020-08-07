@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: '', component:WelcomeComponent},
   {path : 'auth', component: AuthComponent},
   {path:'scrum', component:ScrumComponent, children : [
-    {path:'Dashboard', component: DashboardComponent},
+    {path:'Projects', component: DashboardComponent},
     {path:'project', component: ProjectComponent},
     {path:'update-profil', component: UpdateProfileComponent},
     {path: 'project/:id/new-sprint', component: CreateSprintComponent},

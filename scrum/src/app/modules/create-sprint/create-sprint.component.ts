@@ -12,70 +12,66 @@ import { MatListOption } from '@angular/material/list';
 export class CreateSprintComponent implements OnInit {
   sprintForm: FormGroup
   availableTasks: any;
-  restTasks=[]
-  selected=[]
+  restTasks = []
+  selected = []
   id: any;
   projectId: any;
-  constructor(private projectService: ProjectService, private router: Router, private route:ActivatedRoute) { }
+  constructor(private projectService: ProjectService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.projectId=this.route.snapshot.params["id"]
+    this.projectId = this.route.snapshot.params["id"]
 
     this.projectService.getNonTakenTasks(this.projectId).subscribe(
-      data =>{
+      data => {
         console.log(data)
 
-        this.availableTasks=data
+        this.availableTasks = data
       })
 
-      this.sprintForm = new FormGroup({
-        name: new FormControl('', Validators.required),
-        description: new FormControl(''),
-        project: new FormControl(this.projectId),
-      })
+    this.sprintForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      description: new FormControl(''),
+      project: new FormControl(this.projectId),
+    })
 
   }
-  onGroupsChange(options:  MatListOption[]) {
-    this.selected=[]
+  onGroupsChange(options: MatListOption[]) {
+    this.selected = []
 
-    options.map(o =>{
-      
+    options.map(o => {
+
       this.selected.push(o.value)
 
-     
+
     })
   }
-  save(){
-    if(this.sprintForm.controls['name'].status=='VALID' && this.selected.length != 0){
-      //if(this.selected.length==this.availableTasks.length) this.availableTasks=[]
-      /*this.selected.map(idTask =>{
-        this.availableTasks.splice(idTask[1],1,"")
-      })*/
-      
+  save() {
+    if (this.sprintForm.controls['name'].status == 'VALID' && this.selected.length != 0) {
 
       this.projectService.createSprint(this.sprintForm.value).subscribe(
-        data =>{
-          this.id=data
-          this.selected.map(idTask =>{
-           
+        data => {
+          this.id = data
+          this.selected.map(idTask => {
+
             let i
-            for(i = 0; i < this.availableTasks.length; i++){
-              if (this.availableTasks[i].id === idTask){
-                 this.availableTasks.splice(i, 1); }}
-            //this.availableTasks.splice(idTask[1],1)
-            this.projectService.addTaskToSprint(this.id,idTask).subscribe()
+            for (i = 0; i < this.availableTasks.length; i++) {
+              if (this.availableTasks[i].id === idTask) {
+                this.availableTasks.splice(i, 1);
+              }
+            }
+            this.projectService.addTaskToSprint(this.id, idTask).subscribe()
           })
-          
+
           this.sprintForm = new FormGroup({
             name: new FormControl('', Validators.required),
             description: new FormControl(''),
             project: new FormControl(this.projectId),
           })
         })
-        
-       
+
+
     }
-   
+
   }
 
 }

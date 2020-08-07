@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
           this.close()
 
 
-          this.router.navigate(['/scrum/Dashboard']);
+          this.router.navigate(['/scrum/Projects']);
 
         },
         err => {

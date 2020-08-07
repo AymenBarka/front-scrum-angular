@@ -48,7 +48,9 @@
 
 .project-text {
     font-weight: 600;
-	color: #000000;
+    color: #000000;
+    width: 100% !important;
+
 }
 
 .icon-button{

@@ -1,34 +1,48 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-          <div class="drag-container">
-              <div class="section-heading">to Do</div>
-          
-              <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todos" [cdkDropListConnectedTo]="[doingList,doneList]"
-                class="item-list" (cdkDropListDropped)="drop($event)">
-                <div class="item-box" *ngFor="let todo of todos" cdkDrag [cdkDragData]="todo">{{todo.title}}</div>
-              </div>
-          </div>
+
+  <div class="row">
+
+    <div class="col-md-4">
+      <div *ngIf="todos">
       </div>
-      <div class="col-md-4">
-          <div class="drag-container">
-              <div class="section-heading">Doing</div>
-          
-              <div cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing" [cdkDropListConnectedTo]="[todoList,doneList]"
-                class="item-list" (cdkDropListDropped)="drop($event)">
-                <div class="item-box" *ngFor="let todo of doing" cdkDrag [cdkDragData]="todo">{{todo.title}}</div>
-              </div>
-            </div>
-      </div>
-      <div class="col-md-4">
-          <div class="drag-container">
-              <div class="section-heading">Done</div>
-          
-              <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList,doingList]"
-                class="item-list" (cdkDropListDropped)="drop($event)">
-                <div class="item-box" *ngFor="let todo of done" cdkDrag [cdkDragData]="todo">{{todo.title}}</div>
-              </div>
-            </div>
+      <div class="drag-container">
+        Todo {{todos.length}}
+
+        <div class="section-heading"><h4> Do</h4></div>
+       
+        <div class="todo dragList" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todos"
+          [cdkDropListConnectedTo]="[doingList,doneList]" class="item-list" (cdkDropListDropped)="drop($event)">
+          <div class="item-box" *ngFor="let todo of todos" cdkDrag [cdkDragData]="todo">{{todo.title}}</div>
+        </div>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="drag-container">
+        <div *ngIf="doing">
+          Doing
+          {{doing.length}}
+        </div>
+        <div class="section-heading"><h4> Doing</h4></div>
+
+        <div class="doing dragList" cdkDropList #doingList="cdkDropList" [cdkDropListData]="doing"
+          [cdkDropListConnectedTo]="[todoList,doneList]" style="min-height: 60px; border-radius:4px;display: block ;" (cdkDropListDropped)="drop($event)">
+          <div class="item-box" *ngFor="let todo of doing" cdkDrag [cdkDragData]="todo">{{todo.title}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="drag-container">
+        <div *ngIf="done">
+          Done
+          {{done.length}}
+        </div>
+        <div class="section-heading"><h4> Done</h4></div>
+
+        <div class="done dragList" cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
+          [cdkDropListConnectedTo]="[todoList,doingList]" style="min-height: 60px; border-radius:4px;display: block ;" (cdkDropListDropped)="drop($event)">
+          <div class="item-box" *ngFor="let todo of done" cdkDrag [cdkDragData]="todo">{{todo.title}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

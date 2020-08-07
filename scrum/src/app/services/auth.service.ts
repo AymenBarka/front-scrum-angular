@@ -25,7 +25,7 @@ export class AuthService {
     this.currentUser = this.currentUserSubject.asObservable();
 
   }
-  url = 'http://localhost:8084/api/auth/'
+  url = 'https://bescrum.herokuapp.com/api/auth/'
 
   public get currentUserValue(): any {
     return this.currentUserSubject.value;
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   uploadImage(file){ 
-  const req = new HttpRequest('POST', 'http://localhost:8084/api/auth/upload-image', file, {
+  const req = new HttpRequest('POST', 'https://bescrum.herokuapp.com/api/auth/upload-image', file, {
     reportProgress: true,
     responseType: 'text',
   });

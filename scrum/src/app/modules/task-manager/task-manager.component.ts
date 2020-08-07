@@ -59,14 +59,14 @@ content='';
    const todo=event.item.data;
    console.log(event.item)
    console.log(todo)
-   todo.state=event.container.element.nativeElement.classList[0];
+   todo.state=event.container.element.nativeElement.classList[1];
   
-  //change state on database
-  // this.service.updatetaches(todo).subscribe(
-    // (response)=>{
-     //  console.log(response)
-      //   }) 
-    }
-  }
+ //change state on database
+  this.service.updatetaches(todo).subscribe(
+    (response)=>{
+      console.log(response)
+        }) 
+     }
+   }
 
 }
